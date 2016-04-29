@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/open.png</file>
+        <file>res/publish.png</file>
+        <file>res/insert.png</file>
+        <file>res/delete.png</file>
+    </qresource>
+</RCC>
