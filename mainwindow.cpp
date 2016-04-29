@@ -123,7 +123,7 @@ void MainWindow::traverse(Plist::dictionary_type map,QTreeWidgetItem* item,bool 
             break;
         case PlistType::Dic:{
             auto dic =  boost::any_cast<dictionary_type>(itor.second);
-            str.sprintf("(%d Item)",dic.size());
+            str.sprintf("(%d Items)",dic.size());
             auto root = AddTreeNode(item,itor.first,"Dictionary",str.toStdString());
 
             traverse(dic,root,false);
@@ -131,7 +131,7 @@ void MainWindow::traverse(Plist::dictionary_type map,QTreeWidgetItem* item,bool 
             break;
         case PlistType::Array:{
             auto v = boost::any_cast<array_type>(itor.second);
-            str.sprintf("(%d Item)",v.size());
+            str.sprintf("(%d Items)",v.size());
             auto root = AddTreeNode(item,itor.first,"Array",str.toStdString());
             addArray(v,root);
         }
@@ -188,7 +188,7 @@ void MainWindow::addArray(Plist::array_type map, QTreeWidgetItem *parent)
         case PlistType::Dic:{
             auto dic =  boost::any_cast<dictionary_type>(itor);
             QString str2;
-            str2.sprintf("(%d Item)",dic.size());
+            str2.sprintf("(%d Items)",dic.size());
 
             auto root = AddTreeNode(parent,str.toStdString().c_str(),"Dictionary",str2.toStdString());
 
@@ -198,7 +198,7 @@ void MainWindow::addArray(Plist::array_type map, QTreeWidgetItem *parent)
         case PlistType::Array:{
             auto v = boost::any_cast<array_type>(itor);
             QString str2;
-            str2.sprintf("(%d Item)",v.size());
+            str2.sprintf("(%d Items)",v.size());
             auto root = AddTreeNode(parent,str.toStdString().c_str(),"Array",str2.toStdString());
             addArray(v,root);
         }
@@ -256,7 +256,7 @@ void MainWindow::open(std::string file)
     readPlist(file.c_str(),dic);
 
     QString str;
-    str.sprintf("(%d Item)",dic.size());
+    str.sprintf("(%d Items)",dic.size());
     traverse(dic,AddTreeRoot("Root","Dictionary",str.toStdString()),true);
     _vesselDic.insert(dic.begin(),dic.end());
     /*for(auto &itor:dic){
